@@ -1,4 +1,4 @@
-Я Екатерина Рузиева, я учу JavaScript!
+My name is Ekaterina Ruziyeva and I learn JS!
 
 ## Javascript Assignments
 
