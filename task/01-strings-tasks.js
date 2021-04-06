@@ -67,7 +67,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  throw new Error("Not implemented");
+  return substr(7);
 }
 
 /**
@@ -81,7 +81,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-  throw new Error("Not implemented");
+  return value.charAt(0);
 }
 
 /**
