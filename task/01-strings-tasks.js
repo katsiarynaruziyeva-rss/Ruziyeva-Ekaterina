@@ -34,14 +34,15 @@ function concatenateStrings(value1, value2) {
  *   'b'     => 1
  *   ''      => 0
  */
+
 function getStringLength(value) {
-  return value.lenght;
+  return value.length;
 }
 
 /**
  * Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings"
  *
  * @param {string} firstName
  * @param {string} lastName
