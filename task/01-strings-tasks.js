@@ -111,7 +111,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-  throw new Error("Not implemented");
+  return 'value'.repeat(Numer(count));
 }
 
 /**
@@ -261,8 +261,7 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  throw new Error("Not implemented");
-}
+    
 
 module.exports = {
   concatenateStrings: concatenateStrings,
