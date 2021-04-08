@@ -197,7 +197,19 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  throw new Error("Not implemented");
+  const WIDTH = "─";
+  const HEIGHT = "│";
+  const LeftTopAngle = "┌";
+  const RightTopAngle = "┐";
+  const LeftBottomAngle = "└";
+  const RightBottomAngle = "┘";
+  let TopWidth = LeftTopAngle + WIDTH.repeat(width - 2) + RightTopAngle + "\n";
+  let AllHeight = (HEIGHT + " ".repeat(width - 2) + HEIGHT + "\n").repeat(
+    height - 2
+  );
+  let BottomWidth =
+    LeftBottomAngle + WIDTH.repeat(width - 2) + RightBottomAngle + "\n";
+  return TopWidth + AllHeight + BottomWidth;
 }
 
 /**
