@@ -228,7 +228,9 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  throw new Error("Not implemented");
+    const Alfa = [ a,b,c,d,i,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
+    for (i=1,i<26,i+13){ if ( i === i.toUpperCase())}
+    return str
 }
 
 /**
@@ -245,7 +247,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  if (value === "string") {
+  if (typeof value === "string" || value instanceof String) {
     return true;
   } else {
     return false;
@@ -276,7 +278,63 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(value) {}
+function getCardId(value) {
+  const Card = [
+    "A♣",
+    "2♣",
+    "3♣",
+    "4♣",
+    "5♣",
+    "6♣",
+    "7♣",
+    "8♣",
+    "9♣",
+    "10♣",
+    "J♣",
+    "Q♣",
+    "K♣",
+    "A♦",
+    "2♦",
+    "3♦",
+    "4♦",
+    "5♦",
+    "6♦",
+    "7♦",
+    "8♦",
+    "9♦",
+    "10♦",
+    "J♦",
+    "Q♦",
+    "K♦",
+    "A♥",
+    "2♥",
+    "3♥",
+    "4♥",
+    "5♥",
+    "6♥",
+    "7♥",
+    "8♥",
+    "9♥",
+    "10♥",
+    "J♥",
+    "Q♥",
+    "K♥",
+    "A♠",
+    "2♠",
+    "3♠",
+    "4♠",
+    "5♠",
+    "6♠",
+    "7♠",
+    "8♠",
+    "9♠",
+    "10♠",
+    "J♠",
+    "Q♠",
+    "K♠",
+  ];
+  return Card.indexOf(value);
+}
 module.exports = {
   concatenateStrings: concatenateStrings,
   getStringLength: getStringLength,
