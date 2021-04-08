@@ -52,7 +52,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (+value1 + +value2) / 2;
+  return Math.ceil((value1 + value2) / 2);
 }
 
 /**
@@ -219,10 +219,7 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def) {
-  return Number(value) NaN=def;
-  
-}
+function toNumber(value, def) {}
 
 module.exports = {
   getRectangleArea: getRectangleArea,

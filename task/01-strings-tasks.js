@@ -67,7 +67,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return substr(7);
+  return substr(7,-1);
 }
 
 /**
