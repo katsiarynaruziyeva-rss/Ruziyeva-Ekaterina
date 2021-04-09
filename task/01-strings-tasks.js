@@ -228,9 +228,14 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    const Alfa = [ a,b,c,d,i,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
-    for (i=1,i<26,i+13){ if ( i === i.toUpperCase())}
-    return str
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !?,.";
+  const rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm !?,.";
+  var newString = "";
+  for (var i = 0; i < str.length; i++) {
+    var index = alphabet.indexOf(str[i]);
+    newString = newString.concat(rot13.substring(index, index + 1));
+  }
+  return newString;
 }
 
 /**
