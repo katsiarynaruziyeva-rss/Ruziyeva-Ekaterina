@@ -210,20 +210,19 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  var u = Number.isInteger(n / 2);
-  var l = n;
-  let result;
-  if (u > 2) {
-    return (result = "false");
-  } else if ((l = 1)) {
-    return (result = "false");
-  } else if ((l = 2)) {
-    return (result = "true");
+  let flag = true;
+  for (let i = 2; i < n; i++) {
+    if (n % i == 0) {
+      flag = false;
+      break;
+    }
+  }
+  if (flag === true) {
+    return true;
   } else {
-    return (result = "true");
+    return false;
   }
 }
-console.log(isPrime(6));
 /**
  * Tries to convert value to number and returns it if conversion was successfull;
  * otherwise returns default value passed as a second argument.
