@@ -67,7 +67,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return substr(7,-1);
+  return value.slice(7, -1);
 }
 
 /**
@@ -81,7 +81,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-  return value.charAt(0);
+  return value[0];
 }
 
 /**
@@ -96,7 +96,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-  throw new Error("Not implemented");
+  return value.trim();
 }
 
 /**
@@ -111,7 +111,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-  throw new Error("Not implemented");
+  return value.repeat(count);
 }
 
 /**
@@ -127,7 +127,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  throw new Error("Not implemented");
+  return str.replace(value, "");
 }
 
 /**
@@ -142,7 +142,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  throw new Error("Not implemented");
+  return str.replace(/[<>]/g, "");
 }
 
 /**
@@ -156,7 +156,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-  throw new Error("Not implemented");
+  return str.toUpperCase();
 }
 
 /**
@@ -170,7 +170,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-  throw new Error("Not implemented");
+  return str.split(";");
 }
 
 /**
@@ -197,7 +197,19 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  throw new Error("Not implemented");
+  const WIDTH = "─";
+  const HEIGHT = "│";
+  const LeftTopAngle = "┌";
+  const RightTopAngle = "┐";
+  const LeftBottomAngle = "└";
+  const RightBottomAngle = "┘";
+  let TopWidth = LeftTopAngle + WIDTH.repeat(width - 2) + RightTopAngle + "\n";
+  let AllHeight = (HEIGHT + " ".repeat(width - 2) + HEIGHT + "\n").repeat(
+    height - 2
+  );
+  let BottomWidth =
+    LeftBottomAngle + WIDTH.repeat(width - 2) + RightBottomAngle + "\n";
+  return TopWidth + AllHeight + BottomWidth;
 }
 
 /**
@@ -216,9 +228,15 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  throw new Error("Not implemented");
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !?,.";
+  const rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm !?,.";
+  var newString = "";
+  for (var i = 0; i < str.length; i++) {
+    var index = alphabet.indexOf(str[i]);
+    newString = newString.concat(rot13.substring(index, index + 1));
+  }
+  return newString;
 }
-
 /**
  * Returns true if the value is string; otherwise false.
  * @param {string} value
@@ -233,7 +251,11 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  throw new Error("Not implemented");
+  if (typeof value === "string" || value instanceof String) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -261,9 +283,62 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  return value.forEach(function( i));
+  const Card = [
+    "A♣",
+    "2♣",
+    "3♣",
+    "4♣",
+    "5♣",
+    "6♣",
+    "7♣",
+    "8♣",
+    "9♣",
+    "10♣",
+    "J♣",
+    "Q♣",
+    "K♣",
+    "A♦",
+    "2♦",
+    "3♦",
+    "4♦",
+    "5♦",
+    "6♦",
+    "7♦",
+    "8♦",
+    "9♦",
+    "10♦",
+    "J♦",
+    "Q♦",
+    "K♦",
+    "A♥",
+    "2♥",
+    "3♥",
+    "4♥",
+    "5♥",
+    "6♥",
+    "7♥",
+    "8♥",
+    "9♥",
+    "10♥",
+    "J♥",
+    "Q♥",
+    "K♥",
+    "A♠",
+    "2♠",
+    "3♠",
+    "4♠",
+    "5♠",
+    "6♠",
+    "7♠",
+    "8♠",
+    "9♠",
+    "10♠",
+    "J♠",
+    "Q♠",
+    "K♠",
+  ];
+  return Card.indexOf(value);
 }
-
 module.exports = {
   concatenateStrings: concatenateStrings,
   getStringLength: getStringLength,

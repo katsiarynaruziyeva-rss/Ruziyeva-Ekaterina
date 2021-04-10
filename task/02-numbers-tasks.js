@@ -1,5 +1,7 @@
 "use strict";
 
+const { extractEmails } = require("./01-strings-tasks");
+
 /********************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
@@ -54,6 +56,11 @@ function getCicleCircumference(radius) {
 function getAverage(value1, value2) {
   var arr = [value1, value2];
   var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  var result = sum / arr.lenght;
+  return result;
 }
 
 /**
@@ -181,9 +188,10 @@ function getParallelipidedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  throw new Error("Not implemented");
+  var u = num / Math.pow(10, pow);
+  var y = Math.round(u) * Math.pow(10, pow);
+  return y;
 }
-
 /**
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
@@ -202,9 +210,20 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  return n % 2 !== 0;
+  var u = Number.isInteger(n / 2);
+  var l = n;
+  let result;
+  if (u > 2) {
+    return (result = "false");
+  } else if ((l = 1)) {
+    return (result = "false");
+  } else if ((l = 2)) {
+    return (result = "true");
+  } else {
+    return (result = "true");
+  }
 }
-
+console.log(isPrime(6));
 /**
  * Tries to convert value to number and returns it if conversion was successfull;
  * otherwise returns default value passed as a second argument.
@@ -220,8 +239,13 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def) {}
-
+function toNumber(value, def) {
+  if (isNaN(value) === false) {
+    return Number(value);
+  } else {
+    return def;
+  }
+}
 module.exports = {
   getRectangleArea: getRectangleArea,
   getCicleCircumference: getCicleCircumference,
