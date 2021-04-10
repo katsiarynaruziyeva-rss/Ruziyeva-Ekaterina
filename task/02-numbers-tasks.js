@@ -54,13 +54,12 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  var arr = [value1, value2];
+  var len = arguments.length;
   var sum = 0;
-  for (var i = 0; i < arr.length; i++) {
-    sum += arr[i];
+  for (var i = 0; i < len; i++) {
+    sum += +arguments[i] / Number.MAX_SAFE_INTEGER;
   }
-  var result = sum / arr.lenght;
-  return result;
+  return (sum / len) * Number.MAX_SAFE_INTEGER;
 }
 
 /**
