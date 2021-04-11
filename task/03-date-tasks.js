@@ -54,10 +54,18 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-  var newDate = date;
-  var year = newDate.getFullYear();
-  var laer = year % 400 == 0;
+  var u1 = new Date(date);
+  var u2 = u1.getFullYear();
+  if (
+    (u2 % 4 === 0 && u2 % 100 !== 0 && u2 % 400 !== 0) ||
+    (u2 % 4 === 0 && u2 % 100 === 0 && u2 % 400 === 0)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
 /**
  * Returns the string represention of the timespan between two dates.
  * The format of output string is "HH:mm:ss.sss"
@@ -74,13 +82,18 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-  var u1 = new Date(startDate);
-  var u2 = new Date(endDate);
-  var u3 = u2.getTime() - u1.getTime();
-  var u4 = new Date(u3);
-  var isoDate = u4.toISOString();
-  var u5 = isoDate.substr(12, 23);
-  return u5;
+  var u1 = endDate - startDate;
+  var sss = u1 % 1000;
+  var sec = Math.floor(u1 / 1000) % 60;
+  var min = Math.floor(u1 / 60000) % 60;
+  var h = Math.floor(u1 / 3600000) % 24;
+  var milisec = 10 < sss < 100 ? "0" + sss : sss;
+  var milisec = sss < 10 ? "00" + sss : sss;
+  var hours = h < 10 ? "0" + h : h;
+  var minutes = min < 10 ? "0" + min : min;
+  var seconds = sec < 10 ? "0" + sec : sec;
+  var u2 = hours + ":" + minutes + ":" + seconds + "." + milisec;
+  return u2;
 }
 
 /**
