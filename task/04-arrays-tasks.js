@@ -36,9 +36,7 @@ function findElement(arr, value) {
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(len) {
-  throw new Error("Not implemented");
-}
+function generateOdds(len) {}
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice using original order
@@ -52,7 +50,7 @@ function generateOdds(len) {
  *    [] => []
  */
 function doubleArray(arr) {
-  throw new Error("Not implemented");
+  return arr.concat(arr);
 }
 
 /**
@@ -67,7 +65,7 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-  throw new Error("Not implemented");
+  return arr.filter((value) => value > 0);
 }
 
 /**
