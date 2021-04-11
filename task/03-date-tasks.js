@@ -54,9 +54,10 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-  throw new Error("Not implemented");
+  var newDate = date;
+  var year = newDate.getFullYear();
+  var laer = year % 400 == 0;
 }
-
 /**
  * Returns the string represention of the timespan between two dates.
  * The format of output string is "HH:mm:ss.sss"
@@ -73,7 +74,13 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-  throw new Error("Not implemented");
+  var u1 = new Date(startDate);
+  var u2 = new Date(endDate);
+  var u3 = u2.getTime() - u1.getTime();
+  var u4 = new Date(u3);
+  var isoDate = u4.toISOString();
+  var u5 = isoDate.substr(12, 23);
+  return u5;
 }
 
 /**
@@ -90,7 +97,18 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-  throw new Error("Not implemented");
+  var u1 = new Date(date);
+  var u2 = u1.toUTCString();
+  var hours = u1.getUTCHours();
+  var hours12 = hours > 12 ? hours - 12 : hours;
+  var minutes = date.getUTCMinutes();
+  var rad1 = 0.5 * (60 * hours12 + minutes);
+  var rad2 = 6 * minutes;
+  var u3 = Math.abs(rad2 - rad1);
+  var u4 = u3 > 180 ? 360 - u3 : u3;
+  var u5 = (u4 * Math.PI) / 180;
+
+  return u5;
 }
 
 module.exports = {
