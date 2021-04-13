@@ -289,7 +289,9 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  throw new Error("Not implemented");
+  var newarr = [];
+  for (var i = 0; i < arr.length; i++) newarr.concat(a[i]);
+  return newarr;
 }
 
 /**
@@ -323,9 +325,16 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  throw new Error("Not implemented");
+  if ((arr.length = 0)) {
+    return 0;
+  }
+  arr.reduce(function (x) {
+    if (x > 0) {
+      arr.push(x);
+    }
+  }, 0);
+  return arr.length;
 }
-
 /**
  * Sorts digit names
  *
@@ -340,7 +349,8 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  throw new Error("Not implemented");
+  var newarr = arr.sort();
+  return newarr;
 }
 
 /**
@@ -356,7 +366,11 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-  throw new Error("Not implemented");
+  var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
 }
 
 /**
