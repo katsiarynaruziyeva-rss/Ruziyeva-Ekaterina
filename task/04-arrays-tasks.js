@@ -171,7 +171,8 @@ function insertItem(arr, item, index) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
  */
 function getHead(arr, n) {
-  throw new Error("Not implemented");
+  var newarr = arr.splice(n);
+  return arr;
 }
 
 /**
