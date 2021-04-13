@@ -225,7 +225,10 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-  throw new Error("Not implemented");
+  arr = arr.map(function (x) {
+    return x * x;
+  });
+  return arr;
 }
 
 /**
