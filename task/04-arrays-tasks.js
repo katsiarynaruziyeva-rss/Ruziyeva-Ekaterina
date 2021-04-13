@@ -122,12 +122,11 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-  for (let arr of arr) {
-    arr2 = arr2.toUpperCase();
-    return arr2;
-  }
+  arr = arr.map(function (x) {
+    return x.toUpperCase();
+  });
+  return arr;
 }
-
 /**
  * Returns the array of string lengths from the specified string array.
  *
@@ -139,7 +138,10 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  throw new Error("Not implemented");
+  arr = arr.map(function (x) {
+    return x.length;
+  });
+  return arr;
 }
 
 /**
@@ -154,7 +156,8 @@ function getStringsLength(arr) {
  *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-  throw new Error("Not implemented");
+  arr = arr.splice(index, 0, item);
+  return arr;
 }
 
 /**
