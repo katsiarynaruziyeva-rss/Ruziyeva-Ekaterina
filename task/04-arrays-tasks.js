@@ -422,7 +422,9 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-  throw new Error("Not implemented");
+  var u = arr.toString();
+  var u2 = u.replace(/""" "/g);
+  return u2;
 }
 
 /**
