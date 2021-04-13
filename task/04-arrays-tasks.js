@@ -1,5 +1,7 @@
 "use strict";
 
+const { convertToUpperCase } = require("./01-strings-tasks");
+
 /*********************************************************************************************
  *                                                                                           *
  * Plese read the following tutorial before implementing tasks:                              *
@@ -36,7 +38,15 @@ function findElement(arr, value) {
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(len) {}
+function generateOdds(len) {
+  let odd = 1;
+  let arr = [];
+  for (let i = 1; i <= len; i++) {
+    arr.push(odd);
+    odd += 2;
+  }
+  return arr;
+}
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice using original order
@@ -77,12 +87,11 @@ function getArrayOfPositives(arr) {
  * @example
  *    [ 0, 1, 'cat', 3, true, 'dog' ] => [ 'cat', 'dog' ]
  *    [ 1, 2, 3, 4, 5 ] => []
- *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
+ *    [ 'cat', 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-  throw new Error("Not implemented");
+  return arr.filter((element) => typeof element === "string");
 }
-
 /**
  * Removes falsy values from the specified array
  * Falsy values: false, null, 0, "", undefined, and NaN.
@@ -97,7 +106,9 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-  throw new Error("Not implemented");
+  var arrNew = [];
+  var arrNew = arr.filter((i) => Boolean(i));
+  return arrNew;
 }
 
 /**
@@ -111,7 +122,10 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-  throw new Error("Not implemented");
+  for (let arr of arr) {
+    arr2 = arr2.toUpperCase();
+    return arr2;
+  }
 }
 
 /**
@@ -240,7 +254,9 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  throw new Error("Not implemented");
+  return arr.filter(function (d, i) {
+    return (i + 1) % 3 !== 0;
+  });
 }
 
 /**
