@@ -352,8 +352,23 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  var newarr = arr.sort();
-  return newarr;
+  var u = [
+    "zero" === 0,
+    "one" === 1,
+    "two" === 2,
+    "three" === 3,
+    "four" === 4,
+    "five" === 5,
+    "six" === 6,
+    "seven" === 7,
+    "eight" === 8,
+    "nine" === 9,
+    "ten" === 10,
+  ];
+  var arr2 = arr.sort(function (a, b) {
+    return a - b;
+  });
+  return arr2;
 }
 
 /**
@@ -550,7 +565,15 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-  throw new Error("Not implemented");
+  let map = new Map(),
+    count = array.length;
+
+  for (let key, i = 0; i < count; ++i) {
+    key = keySelector(array[i]);
+    if (map.has(key)) map.get(key).push(valueSelector(array[i]));
+    else map.set(key, [valueSelector(array[i])]);
+  }
+  return map;
 }
 
 /**
