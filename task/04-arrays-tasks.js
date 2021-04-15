@@ -507,7 +507,8 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  throw new Error("Not implemented");
+  var merged = [].concat.apply([], arrays);
+  return merged.ToCharArray().split("");
 }
 
 /**
@@ -545,7 +546,15 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(arr) {
-  throw new Error("Not implemented");
+  if (arr.length % 2 === 0) {
+    var u = arr.splice(arr.length / 2);
+    var newarr = arr;
+    return u.concat(newarr);
+  } else if (arr.length % 2 !== 0) {
+    var u2 = arr.splice(Math.ceil(arr.length / 2));
+    var u3 = arr.splice(Math.floor(arr.length / 2));
+    return u2.concat(u3, arr);
+  }
 }
 
 module.exports = {
