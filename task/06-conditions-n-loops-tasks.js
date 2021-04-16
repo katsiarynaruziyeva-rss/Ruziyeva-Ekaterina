@@ -226,7 +226,7 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  throw new Error("Not implemented");
+  for (var i = 0; i < Math.abs(a - b); i++) {}
 }
 
 /**
@@ -242,7 +242,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-  throw new Error("Not implemented");
+  return str.split("").reverse().join("");
 }
 
 /**
