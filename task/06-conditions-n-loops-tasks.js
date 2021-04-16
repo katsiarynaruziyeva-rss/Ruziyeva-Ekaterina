@@ -258,7 +258,12 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-  throw new Error("Not implemented");
+  var y = 0;
+  for (; num; num = Math.floor(num / 10)) {
+    y *= 10;
+    y += num % 10;
+  }
+  return y;
 }
 
 /**
