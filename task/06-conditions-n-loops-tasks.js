@@ -358,9 +358,7 @@ function getDigitalRoot(num) {
  */
 function isBracketsBalanced(str) {
   let open = [];
-
   const openBrackets = new Set(["(", "[", "{", "<"]);
-
   const bracketCorrespondence = {
     ")": "(",
     "]": "[",
@@ -414,7 +412,11 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-  throw new Error("Not implemented");
+  var d = endDate - startDate;
+  var sec = Math.floor(u1 / 1000) % 60;
+  var min = Math.floor(u1 / 60000) % 60;
+  var h = Math.floor(u1 / 3600000) % 24;
+  var day = Math.floor(u1 / 86400000) % 30;
 }
 
 /**
@@ -475,7 +477,21 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-  throw new Error("Not implemented");
+  var rowsm1 = m1.length,
+    colsm1 = m1[0].length,
+    rowsm2 = m2.length,
+    colsm2 = m2[0].length,
+    C = [];
+  if (colsm1 != rowsm2) return false;
+  for (var i = 0; i < rowsm1; i++) C[i] = [];
+  for (var k = 0; k < colsm2; k++) {
+    for (var i = 0; i < rowsm1; i++) {
+      var t = 0;
+      for (var j = 0; j < rowsm2; j++) t += m1[i][j] * m2[j][k];
+      C[i][k] = t;
+    }
+  }
+  return C;
 }
 
 /**
