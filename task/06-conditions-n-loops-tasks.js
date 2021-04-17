@@ -287,7 +287,22 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-  throw new Error("Not implemented");
+  var s = 0;
+  var doubleDigit = false;
+  for (var i = ccn.length - 1; i >= 0; i--) {
+    var digit = +ccn[i];
+    if (doubleDigit) {
+      digit *= 2;
+      if (digit > 9) digit -= 9;
+    }
+    s += digit;
+    doubleDigit = !doubleDigit;
+  }
+  if (s % 10 == 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -305,9 +320,21 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-  throw new Error("Not implemented");
+  var digits = num.toString().split("").map(Number);
+  var sum = 0;
+  for (var i = 0; i < digits.length; i++) {
+    sum += digits[i];
+  }
+  var sumString = sum.toString();
+  if (sumString.length > 1) {
+    var sumDigits = sumString.split("").map(Number);
+    var firstSumDigit = sumDigits.slice(0);
+    var lastSumDigit = sumDigits.slice(1);
+    return firstSumDigit[0] + lastSumDigit[0];
+  } else {
+    return sum;
+  }
 }
-
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
  * Balanced means that is, whether it consists entirely of pairs of opening/closing brackets
