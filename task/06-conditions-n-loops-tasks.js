@@ -138,7 +138,26 @@ function isTriangle(a, b, c) {
  *
  */
 function doRectanglesOverlap(rect1, rect2) {
-  throw new Error("Not implemented");
+  let x0 = rect1.left;
+  let y0 = rect1.top;
+  let x1 = x0 + rect1.width;
+  let y1 = y0 + rect1.height;
+
+  let x2 = rect2.left;
+  let y2 = rect2.top;
+  let x3 = x2 + rect2.width;
+  let y3 = y2 + rect2.height;
+
+  if (
+    x0 > x3 /* первый правее второго */ ||
+    x1 < x2 /* первый левее второго */ ||
+    y0 > y3 /* первый ниже второго */ ||
+    y1 < y2 /* первый выше второго */
+  ) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 /**
@@ -454,9 +473,7 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(pathes) {
-  throw new Error("Not implemented");
-}
+function getCommonDirectoryPath(pathes) {}
 
 /**
  * Returns the product of two specified matrixes.
@@ -524,7 +541,25 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(position) {}
+function evaluateTicTacToePosition(position) {
+  let u = {
+    X: 1,
+    0: 2,
+  };
+  let sum = 0;
+  for (let i = 0; i < position.length; i++) {
+    for (let j = 0; j < 3; j++) {
+      sum += position[i][j];
+      if ((sum = 3)) {
+        return X;
+      } else if ((sum = 6)) {
+        return 0;
+      } else {
+        return undefined;
+      }
+    }
+  }
+}
 
 module.exports = {
   getFizzBuzz: getFizzBuzz,
