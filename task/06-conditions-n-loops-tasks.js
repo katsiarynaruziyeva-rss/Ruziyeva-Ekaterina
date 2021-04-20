@@ -244,7 +244,28 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(a, b, isStartIncluded, isEndIncluded) {}
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  let u = [a, b];
+  let u1 = u.sort(function (a, b) {
+    return a - b;
+  });
+  let start = u1[0];
+  let end = u1[1];
+  let u3 = [start, end];
+  let u4 = u3.toString();
+  if (isStartIncluded == true && isEndIncluded == true) {
+    return `[${start}, ${end}]`;
+  }
+  if (isStartIncluded == true && isEndIncluded == false) {
+    return `[${start}, ${end})`;
+  }
+  if (isStartIncluded == false && isEndIncluded == false) {
+    return `(${start}, ${end})`;
+  }
+  if (isStartIncluded == false && isEndIncluded == true) {
+    return `(${start}, ${end}]`;
+  }
+}
 
 /**
  * Reverse the specified string (put all chars in reverse order)
