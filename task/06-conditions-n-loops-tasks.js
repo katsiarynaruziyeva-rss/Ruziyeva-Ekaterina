@@ -244,9 +244,7 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  for (var i = 0; i < Math.abs(a - b); i++) {}
-}
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {}
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -473,7 +471,11 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(pathes) {}
+function getCommonDirectoryPath(pathes) {
+  var u = pathes[0].split("/");
+  var u1 = pathes[1].split("/");
+  var u1 = pathes[2].split("/");
+}
 
 /**
  * Returns the product of two specified matrixes.
@@ -542,22 +544,28 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-  let u = {
-    X: 1,
-    0: 2,
-  };
-  let sum = 0;
-  for (let i = 0; i < position.length; i++) {
-    for (let j = 0; j < 3; j++) {
-      sum += position[i][j];
-      if ((sum = 3)) {
-        return X;
-      } else if ((sum = 6)) {
-        return 0;
-      } else {
-        return undefined;
-      }
-    }
+  if (
+    position[0].join("") === `000` ||
+    position[1].join("") === `000` ||
+    position[2].join("") === `000` ||
+    `${position[0][0]}${position[1][0]}${position[2][0]}` === `000` ||
+    `${position[0][1]}${position[1][1]}${position[2][1]}` === `000` ||
+    `${position[0][2]}${position[1][2]}${position[2][2]}` === `000` ||
+    `${position[0][0]}${position[1][1]}${position[2][2]}` === `000` ||
+    `${position[0][2]}${position[1][1]}${position[2][0]}` === `000`
+  ) {
+    return "0";
+  } else if (
+    position[0].join("") === `XXX` ||
+    position[1].join("") === `XXX` ||
+    position[2].join("") === `XXX` ||
+    `${position[0][0]}${position[1][0]}${position[2][0]}` === `XXX` ||
+    `${position[0][1]}${position[1][1]}${position[2][1]}` === `XXX` ||
+    `${position[0][2]}${position[1][2]}${position[2][2]}` === `XXX` ||
+    `${position[0][0]}${position[1][1]}${position[2][2]}` === `XXX` ||
+    `${position[0][2]}${position[1][1]}${position[2][0]}` === `XXX`
+  ) {
+    return "X";
   }
 }
 
