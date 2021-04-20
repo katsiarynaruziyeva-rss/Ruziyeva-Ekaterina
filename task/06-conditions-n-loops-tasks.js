@@ -325,22 +325,26 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-  var s = 0;
-  var doubleDigit = false;
-  for (var i = ccn.length - 1; i >= 0; i--) {
-    var digit = +ccn[i];
-    if (doubleDigit) {
-      digit *= 2;
-      if (digit > 9) digit -= 9;
+  ccn = ccn + "";
+  var sum = 0,
+    max = ccn.length - 1;
+  //From the rightmost digit, which is the check digit, moving left
+  for (var j = max; j >= 0; j--) {
+    var digit = parseInt(ccn[j]);
+    //Take the sum of all the digits
+    if ((max - j) & 1) {
+      //double the value of every second digit
+      var add = digit * 2;
+      //if the product of this doubling operation is greater than 9 ,
+      //then sum the digits of the products
+      sum += add < 10 ? add : 1 + (add % 10);
+    } else {
+      sum += digit;
     }
-    s += digit;
-    doubleDigit = !doubleDigit;
   }
-  if (s % 10 == 0) {
-    return true;
-  } else {
-    return false;
-  }
+  //If the total modulo 10 is equal to 0 (if the total ends in zero)
+  //then the number is valid according to the Luhn formula;else it is not valid.
+  return sum % 10 === 0;
 }
 
 /**
