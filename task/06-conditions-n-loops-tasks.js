@@ -328,22 +328,16 @@ function isCreditCardNumber(ccn) {
   ccn = ccn + "";
   var sum = 0,
     max = ccn.length - 1;
-  //From the rightmost digit, which is the check digit, moving left
   for (var j = max; j >= 0; j--) {
     var digit = parseInt(ccn[j]);
-    //Take the sum of all the digits
     if ((max - j) & 1) {
-      //double the value of every second digit
       var add = digit * 2;
-      //if the product of this doubling operation is greater than 9 ,
-      //then sum the digits of the products
       sum += add < 10 ? add : 1 + (add % 10);
     } else {
       sum += digit;
     }
   }
-  //If the total modulo 10 is equal to 0 (if the total ends in zero)
-  //then the number is valid according to the Luhn formula;else it is not valid.
+
   return sum % 10 === 0;
 }
 
@@ -497,9 +491,16 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-  var u = pathes[0].split("/");
-  var u1 = pathes[1].split("/");
-  var u1 = pathes[2].split("/");
+  var pathesArr = pathes.map((x) => x.split("/"));
+  pathesArr.sort((a, b) => a.length - b.length);
+  var theShortest = pathesArr[0];
+  pathesArr.splice(0, 1);
+  var res = [];
+  var i = 0;
+  while (pathesArr.every((x) => x[i] === theShortest[i])) {
+    res.push(theShortest[i++] + "/");
+  }
+  return res.join("");
 }
 
 /**
