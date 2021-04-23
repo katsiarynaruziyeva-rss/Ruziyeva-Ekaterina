@@ -448,13 +448,78 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-  var d = endDate - startDate;
-  var sec = Math.floor(u1 / 1000) % 60;
-  var min = Math.floor(u1 / 60000) % 60;
-  var h = Math.floor(u1 / 3600000) % 24;
-  var day = Math.floor(u1 / 86400000) % 30;
-}
+  var dif = endDate - startDate;
+  let sec = dif / 1000;
+  if (sec <= 45) {
+    return "a few seconds ago";
+  }
 
+  if (sec <= 90) {
+    return "a minute ago";
+  }
+  if (sec <= 120) {
+    return `${Math.round(dif / 60000)} minutes ago`;
+  }
+  if (sec <= 45 * 60) {
+    return `${Math.floor(dif / 60000)} minutes ago`;
+  }
+  if (sec <= 90 * 60) {
+    return "an hour ago";
+  }
+  if (sec <= 2 * 3600) {
+    return `${Math.round(dif / 3600000)} hours ago`;
+  }
+  if (sec <= 4.5 * 3600) {
+    return `${Math.floor(dif / 3600000)} hours ago`;
+  }
+  if (sec <= 5 * 3600) {
+    return `${Math.round(dif / 3600000)} hours ago`;
+  }
+  if (sec <= 22 * 3600) {
+    return `${Math.floor(dif / 3600000)} hours ago`;
+  }
+
+  if (sec <= 24 * 60 * 60) {
+    return "a day ago";
+  }
+  if (sec <= 36 * 60 * 60) {
+    return "a day ago";
+  }
+  if (sec <= 48 * 60 * 60) {
+    return `${Math.round(dif / 86400000)} days ago`;
+  }
+  if (sec <= 25 * 24 * 60 * 60) {
+    return `${Math.floor(dif / 86400000)} days ago`;
+  }
+  if (sec <= 45 * 24 * 60 * 60) {
+    return "a month ago";
+  }
+  if (sec <= 60 * 24 * 60 * 60) {
+    return `${Math.round(dif / (86400000 * 30))} months ago`;
+  }
+
+  if (sec <= 4.5 * 3600 * 30 * 24) {
+    return `${Math.round(dif / (86400000 * 30))} months ago`;
+  }
+  if (sec <= 5 * 3600 * 30 * 24) {
+    return `${Math.round(dif / (86400000 * 30))} months ago`;
+  }
+  if (sec <= 5 * 3600 * 30 * 24) {
+    return `${Math.round(dif / (86400000 * 30))} months ago`;
+  }
+  if (sec <= 11.5 * 30 * 24 * 60 * 60) {
+    return `${Math.round(dif / (86400000 * 30))} months ago`;
+  }
+  if (sec <= 1.5 * 12 * 30 * 24 * 60 * 60) {
+    return "a year ago";
+  }
+  if (sec <= 2 * 12 * 30 * 24 * 60 * 60) {
+    return "a year ago";
+  }
+  if (2 * 12 * 30 * 24 * 60 * 60 < sec) {
+    return `${Math.floor(dif / (86400000 * 30 * 12))} years ago`;
+  }
+}
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of specified number.
  * See more about
