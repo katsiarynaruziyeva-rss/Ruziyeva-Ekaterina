@@ -289,10 +289,13 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  return arr.flatMap((number, index) => {
-    let multArr = new Array(index + 1);
-    return (number = multArr.fill(number));
-  });
+  {
+    if (arr.length == 0 || arr.length == 1) return arr;
+    return arr.reduce((acc, v, i) => {
+      acc.push(...Array(i + 1).fill(v));
+      return acc;
+    }, []);
+  }
 }
 
 /**
