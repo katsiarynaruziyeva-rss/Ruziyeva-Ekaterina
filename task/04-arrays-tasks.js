@@ -332,15 +332,12 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  if ((arr.length = 0)) {
-    return 0;
+  if (arr.length == 0) return arr;
+  if (arr.length > 0) {
+    let result = arr.filter((item) => item > 0);
+    let u = result.filter((item) => typeof item === "number");
+    return u.length;
   }
-  arr.reduce(function (x) {
-    if (x > 0) {
-      arr.push(x);
-    }
-  }, 0);
-  return arr.length;
 }
 /**
  * Sorts digit names
