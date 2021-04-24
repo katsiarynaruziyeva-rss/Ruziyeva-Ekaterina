@@ -289,9 +289,10 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  var newarr = [];
-  for (var i = 0; i < arr.length; i++) newarr.concat(a[i]);
-  return newarr;
+  return arr.flatMap((number, index) => {
+    let multArr = new Array(index + 1);
+    return (number = multArr.fill(number));
+  });
 }
 
 /**
@@ -588,7 +589,8 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  throw new Error("Not implemented");
+  var merged = [].concat.apply([], arrays);
+  return merged.ToCharArray().split("");
 }
 
 /**
@@ -626,7 +628,16 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(arr) {
-  throw new Error("Not implemented");
+  if (arr.length % 2 === 0) {
+    var u = arr.splice(arr.length / 2);
+    var newarr = arr;
+    return u.concat(newarr);
+  } else if (arr.length % 2 !== 0) {
+    var arr = [1, 2, 3, 4, 5];
+    var u2 = arr.splice(Math.ceil(arr.length / 2));
+    var u3 = arr.splice(Math.floor(arr.length / 2));
+    return u2.concat(u3, arr);
+  }
 }
 
 module.exports = {
