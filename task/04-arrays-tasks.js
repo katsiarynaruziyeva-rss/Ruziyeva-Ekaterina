@@ -600,8 +600,7 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  var merged = [].concat.apply([], arrays);
-  return merged.ToCharArray().split("");
+  return arr.map(childrenSelector).flat();
 }
 
 /**
