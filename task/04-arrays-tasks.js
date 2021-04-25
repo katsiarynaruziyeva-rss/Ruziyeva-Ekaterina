@@ -641,14 +641,18 @@ function getElementByIndexes(arr, indexes) {
  */
 function swapHeadAndTail(arr) {
   if (arr.length % 2 === 0) {
-    var u = arr.splice(arr.length / 2);
-    var newarr = arr;
-    return u.concat(newarr);
-  } else if (arr.length % 2 !== 0) {
-    var arr = [1, 2, 3, 4, 5];
-    var u2 = arr.splice(Math.ceil(arr.length / 2));
-    var u3 = arr.splice(Math.floor(arr.length / 2));
-    return u2.concat(u3, arr);
+    let head = arr.slice(arr.length / 2);
+    let tail = arr.slice(0, arr.length / 2);
+    return head.concat(tail);
+  }
+  if (arr.length % 2 !== 0) {
+    let head2 = arr.slice(Math.ceil(arr.length / 2));
+    let tail2 = arr.slice(0, Math.floor(arr.length / 2));
+    let middle = arr.slice(
+      Math.floor(arr.length / 2),
+      Math.ceil(arr.length / 2)
+    );
+    return head2.concat(middle, tail2);
   }
 }
 
