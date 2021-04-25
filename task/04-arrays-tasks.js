@@ -39,13 +39,7 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-  let odd = 1;
-  let arr = [];
-  for (let i = 1; i <= len; i++) {
-    arr.push(odd);
-    odd += 2;
-  }
-  return arr;
+  return Array.from({ length: len }, (v, i) => 2 * i + 1);
 }
 
 /**
@@ -267,11 +261,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  var newarr = [];
-  for (var i = 1; i < arr.length; i = i + 2) {
-    newarr.push(arr[i]);
-  }
-  return newarr;
+  return arr.filter((c, i) => i % 2 != 0);
 }
 
 /**
@@ -388,11 +378,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-  var sum = 0;
-  for (var i = 0; i < arr.length; i++) {
-    sum += arr[i];
-  }
-  return sum;
+  return arr.reduce((sum, elem) => sum + elem, 0);
 }
 
 /**
@@ -577,14 +563,13 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-  let map = new Map(),
-    count = array.length;
-
-  for (let key, i = 0; i < count; ++i) {
-    key = keySelector(array[i]);
-    if (map.has(key)) map.get(key).push(valueSelector(array[i]));
-    else map.set(key, [valueSelector(array[i])]);
-  }
+  const map = new Map();
+  array.map((e) => {
+    let k = keySelector(e);
+    map.has(k)
+      ? map.get(k).push(valueSelector(e))
+      : map.set(k, [valueSelector(e)]);
+  });
   return map;
 }
 
